@@ -1,12 +1,12 @@
 defmodule Fizzbuzz do
   @divisors %{"3": "fizz", "5": "buzz"}
 
-  defp check(n) do
-    Enum.reduce(Map.keys(@divisors), [], fn key, acc ->
+  defp replace_if_divisible(n, divisors) do
+    Enum.reduce(Map.keys(divisors), [], fn key, acc ->
       divisor = String.to_integer(Atom.to_string(key))
 
       if rem(n, divisor) == 0 do
-        word = Map.fetch!(@divisors, key)
+        word = Map.fetch!(divisors, key)
         [word | acc]
       else
         acc
@@ -15,19 +15,14 @@ defmodule Fizzbuzz do
     |> Enum.reverse()
   end
 
-  def fizzbuzz(of) do
-    Enum.reduce(1..of, [], fn n, acc ->
-      word =
-        check(n)
-        |> List.flatten()
-        |> Enum.join()
+  def fizzbuzz(until, divisors \\ @divisors) do
+    Enum.reduce(1..until, [], fn n, acc ->
+      word = replace_if_divisible(n, divisors) |> Enum.join()
 
-      case String.length(word) do
-        0 ->
-          [n | acc]
-
-        _ ->
-          [word | acc]
+      if String.length(word) == 0 do
+        [n | acc]
+      else
+        [word | acc]
       end
     end)
     |> Enum.reverse()

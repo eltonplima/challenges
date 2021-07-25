@@ -72,4 +72,24 @@ defmodule FizzbuzzTest do
              "buzz"
            ]
   end
+
+  test "test from 1 to 3 with custom divisors with custom divisor for 1 and 2" do
+    divisors = %{"1": "foo", "2": "bar"}
+
+    assert Fizzbuzz.fizzbuzz(3, divisors) == [
+             "foo",
+             "foobar",
+             "foo"
+           ]
+  end
+
+  test "test from 1 to 3 with custom divisors for 1, 2 and 3" do
+    divisors = %{"1": "foo", "2": "bar", "3": "baz"}
+
+    assert Fizzbuzz.fizzbuzz(3, divisors) == [
+             "foo",
+             "foobar",
+             "foobaz"
+           ]
+  end
 end
