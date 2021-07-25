@@ -1,4 +1,4 @@
-defmodule Fizzbuzz do
+defmodule FizzBuzz do
   @divisors %{"3": "fizz", "5": "buzz"}
 
   defp replace_if_divisible(n, divisors) do
