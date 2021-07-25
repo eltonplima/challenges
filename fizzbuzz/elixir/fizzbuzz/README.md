@@ -1,21 +1,35 @@
 # Fizzbuzz
 
-**TODO: Add description**
+[Fizz buzz is a group word game](https://en.wikipedia.org/wiki/Fizz_buzz) for children to teach them about division.
 
-## Installation
+## How to use
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `fizzbuzz` to your list of dependencies in `mix.exs`:
+To test the default behaviour launch a new iex session:
 
-```elixir
-def deps do
-  [
-    {:fizzbuzz, "~> 0.1.0"}
-  ]
-end
+```shell
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/fizzbuzz](https://hexdocs.pm/fizzbuzz).
+Then execute:
 
+```elixir
+iex(1)> FizzBuzz.fizzbuzz(9)                           
+[1, 2, "fizz", 4, "buzz", "fizz", 7, 8, "fizz"]
+
+iex(2)> FizzBuzz.fizzbuzz(15)
+[1, 2, "fizz", 4, "buzz", "fizz", 7, 8, "fizz", "buzz", 11, "fizz", 13, 14, "fizzbuzz"]
+```
+
+The `FizzBuzz.fizzbuzz` function accept a custom map with the divisor, and the word associated with it:
+
+```elixir
+iex(1)> divisors=%{"1": "foo", "2": "bar", "3": "bazz"}
+
+iex(2)> FizzBuzz.fizzbuzz(9, divisors) 
+["foo", "foobar", "foobazz", "foobar", "foo", "foobarbazz", "foo", "foobar",
+ "foobazz"]
+
+iex(3)> FizzBuzz.fizzbuzz(15, divisors)                
+["foo", "foobar", "foobazz", "foobar", "foo", "foobarbazz", "foo", "foobar",
+ "foobazz", "foobar", "foo", "foobarbazz", "foo", "foobar", "foobazz"]
+```
